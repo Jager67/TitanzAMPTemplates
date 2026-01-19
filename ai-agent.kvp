@@ -1,63 +1,91 @@
-[Meta]
-ConfigVersion=2.0
-DisplayName=Titanz AI Agent
-Description=Local AI automation agent with n8n-style workflow integration
-Author=Titanz.tv
-TargetPlatform=All
-AppType=GenericModule
-MinAMPVersion=2.4.6.10
-ConfigManifest=ai-agentconfig.json
-MetaConfigManifest=ai-agentmetaconfig.json
-Superceeds=
-RequiresUpdate=False
-
-[Config]
-ConfigRoot={{$FullBaseDir}}config/
-ServerConfigFile=config.json
-SavesFolder=./data/
-LogFolder=./logs/
-
-[BaseSetting]
-PortNumber=5678
-AdditionalServerArgs=
-MaxUsers=10
-
-[ai-agent.Startup]
-AppName=node
-WorkingDirectory={{$FullRootDir}}
-LinuxExecutable=node
-WindowsExecutable=node.exe
-Parameters=server.js --config={{$FullBaseDir}}config/config.json --data={{$FullBaseDir}}data/ --log-level={{LogLevel}}
-AutoStart=True
-
-[ai-agent.UpdateStages]
-#1={{$FullBaseDir}}install.sh
-
-[ai-agent.FileConfiguration]
-[ai-agent.Meta]
-DisplayName=Titanz AI Agent
-Description=AI automation server with n8n workflow compatibility
-OS=Windows, Linux
-AutoConfigurable=False
-AppDataPath=./data/
-ConfigExtension=json
-
-[ai-agent.Console]
-AppReadyRegex=^.*Server listening on port \d+.*$
-UserJoinRegex=^.*Client connected:.*$
-UserLeaveRegex=^.*Client disconnected:.*$
-UpdateAvailableRegex=^.*New version available.*$
-
-[ai-agent.Limits]
-SleepMode=False
-SleepOnStart=False
-SleepDelayMinutes=5
-DozeDelayMinutes=10
-AutoRetryCount=5
-
-[ai-agent.Compatibility]
-SteamID=0
-SteamUpdateAnonymous=True
-SupportsUnixPlatform=True
-SupportsMacPlatform=False
-SupportsWindowsPlatform=True
+Meta.DisplayName=Titanz AI Agent
+Meta.Description=AI automation server with n8n workflow compatibility and local LLM integration
+Meta.OS=Windows, Linux
+Meta.Author=Titanz.tv
+Meta.URL=https://github.com/Jager67/TitanzAMPTemplates
+Meta.DisplayImageSource=url:https://raw.githubusercontent.com/Jager67/TitanzAMPTemplates/main/ai-agent-icon.png
+Meta.EndpointURIFormat=http://{0}:{1}/
+Meta.ConfigManifest=ai-agentconfig.json
+Meta.MetaConfigManifest=ai-agentmetaconfig.json
+Meta.ConfigRoot=ai-agent
+Meta.MinAMPVersion=2.4.6.10
+Meta.SpecificDockerImage=
+Meta.DockerRequired=False
+Meta.ContainerPolicy=Supported
+Meta.ContainerPolicyReason=
+Meta.ExtraSetupStepsURI=https://github.com/Jager67/TitanzAMPTemplates/blob/main/ai-agent-examples/README.md
+Meta.Prerequsites=[]
+Meta.ExtraContainerPackages=[]
+Meta.ConfigReleaseState=NotSpecified
+Meta.NoCommercialUsage=False
+Meta.AppConfigId=ai-agent
+Meta.ConfigVersion=2.0
+App.DisplayName=Titanz AI Agent
+App.RootDir=./ai-agent/
+App.BaseDirectory=./ai-agent/
+App.SteamWorkshopDownloadLocation=
+App.ExecutableWin=node.exe
+App.ExecutableLinux=node
+App.WorkingDir=
+App.LinuxCommandLineArgs=server.js --config="{{$FullBaseDir}}config/config.json" --data="{{$FullBaseDir}}data/" --log-level={{LogLevel}}
+App.WindowsCommandLineArgs=server.js --config="{{$FullBaseDir}}config/config.json" --data="{{$FullBaseDir}}data/" --log-level={{LogLevel}}
+App.CommandLineArgs=server.js --config="{{$FullBaseDir}}config/config.json" --data="{{$FullBaseDir}}data/" --log-level={{LogLevel}}
+App.UseLinuxIOREDIR=False
+App.AppSettings={}
+App.EnvironmentVariables={"NODE_ENV":"production"}
+App.CommandLineParameterFormat=-{0} "{1}"
+App.CommandLineParameterDelimiter= 
+App.ExitMethod=OS_CLOSE
+App.ExitTimeout=30
+App.ExitString=quit
+App.ExitFile=app.pid
+App.HasWriteableConsole=True
+App.HasReadableConsole=True
+App.SupportsLiveSettingsChanges=False
+App.LiveSettingChangeCommandFormat=set {0} "{1}"
+App.ApplicationIPBinding=0.0.0.0
+App.Ports=[{"Protocol":"TCP","Port":5678,"Ref":"ServerPort","Name":"AI Agent HTTP API","Description":"Main HTTP API endpoint for AI requests"}]
+App.AdminPortRef=ServerPort
+App.PrimaryApplicationPortRef=ServerPort
+App.MaxUsers=10
+App.UseRandomAdminPassword=False
+App.PersistRandomPassword=True
+App.RemoteAdminPassword=
+App.AdminMethod=STDIO
+App.AdminLoginTransform=None
+App.LoginTransformPrefix=
+App.RCONConnectDelaySeconds=5
+App.RCONConnectRetrySeconds=5
+App.RCONHeartbeatMinutes=0
+App.RCONHeartbeatCommand=ping
+App.TelnetLoginFormat={0}
+App.UpdateSources=[{"UpdateStageName":"Download AI Agent","UpdateSourcePlatform":"All","UpdateSource":"FetchURL","UpdateSourceData":"https://registry.npmjs.org/@titanz/ai-agent/-/ai-agent-latest.tgz","UpdateSourceArgs":"","UpdateSourceVersion":"latest","UnzipUpdateSource":true,"OverwriteExistingFiles":true,"UpdateSourceConditionSetting":"","UpdateSourceConditionValue":""}]
+App.Compatibility=None
+App.SteamUpdateAnonymousLogin=True
+App.SteamForceLoginPrompt=False
+App.RapidStartup=False
+App.DumpFullChildProcessTree=False
+App.MonitorChildProcessName=
+App.MonitorChildProcessWaitMs=1000
+App.SupportsUniversalSleep=False
+App.WakeupMode=Any
+App.ApplicationReadyMode=RegexMatch
+App.TemplateMatchRegex={{(\$?[\w]+)}}
+Console.FilterMatchRegex=
+Console.FilterMatchReplacement=
+Console.ThrowawayMessageRegex=^$
+Console.AppReadyRegex=^.*Server listening on port \d+.*$
+Console.UserJoinRegex=^.*Client connected:.*$
+Console.UserLeaveRegex=^.*Client disconnected:.*$
+Console.UserChatRegex=^$
+Console.UpdateAvailableRegex=^.*New version available.*$
+Console.MetricsRegex=
+Console.SuppressLogAtStart=False
+Console.ActivateLogRegex=
+Console.UserActions={}
+Limits.SleepMode=False
+Limits.SleepOnStart=False
+Limits.SleepDelayMinutes=5
+Limits.DozeDelay=10
+Limits.AutoRetryCount=5
+Limits.SleepStartThresholdSeconds=25
