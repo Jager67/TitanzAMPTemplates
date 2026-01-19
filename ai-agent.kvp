@@ -1,0 +1,63 @@
+[Meta]
+ConfigVersion=2.0
+DisplayName=Titanz AI Agent
+Description=Local AI automation agent with n8n-style workflow integration
+Author=Titanz.tv
+TargetPlatform=All
+AppType=GenericModule
+MinAMPVersion=2.4.6.10
+ConfigManifest=ai-agentconfig.json
+MetaConfigManifest=ai-agentmetaconfig.json
+Superceeds=
+RequiresUpdate=False
+
+[Config]
+ConfigRoot={{$FullBaseDir}}config/
+ServerConfigFile=config.json
+SavesFolder=./data/
+LogFolder=./logs/
+
+[BaseSetting]
+PortNumber=5678
+AdditionalServerArgs=
+MaxUsers=10
+
+[ai-agent.Startup]
+AppName=node
+WorkingDirectory={{$FullRootDir}}
+LinuxExecutable=node
+WindowsExecutable=node.exe
+Parameters=server.js --config={{$FullBaseDir}}config/config.json --data={{$FullBaseDir}}data/ --log-level={{LogLevel}}
+AutoStart=True
+
+[ai-agent.UpdateStages]
+#1={{$FullBaseDir}}install.sh
+
+[ai-agent.FileConfiguration]
+[ai-agent.Meta]
+DisplayName=Titanz AI Agent
+Description=AI automation server with n8n workflow compatibility
+OS=Windows, Linux
+AutoConfigurable=False
+AppDataPath=./data/
+ConfigExtension=json
+
+[ai-agent.Console]
+AppReadyRegex=^.*Server listening on port \d+.*$
+UserJoinRegex=^.*Client connected:.*$
+UserLeaveRegex=^.*Client disconnected:.*$
+UpdateAvailableRegex=^.*New version available.*$
+
+[ai-agent.Limits]
+SleepMode=False
+SleepOnStart=False
+SleepDelayMinutes=5
+DozeDelayMinutes=10
+AutoRetryCount=5
+
+[ai-agent.Compatibility]
+SteamID=0
+SteamUpdateAnonymous=True
+SupportsUnixPlatform=True
+SupportsMacPlatform=False
+SupportsWindowsPlatform=True

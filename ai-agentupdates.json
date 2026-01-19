@@ -1,0 +1,12 @@
+[{
+    "UpdateStageName": "Download AI Agent",
+    "UpdateSourcePlatform": "All",
+    "UpdateSource": "FetchURL",
+    "UpdateSourceData": "https://registry.npmjs.org/@titanz/ai-agent/-/ai-agent-latest.tgz",
+    "UpdateSourceArgs": "",
+    "UpdateSourceVersion": "latest",
+    "UnzipUpdateSource": true,
+    "OverwriteExistingFiles": true,
+    "UpdateSourceConditionSetting": "",
+    "UpdateSourceConditionValue": ""
+}]

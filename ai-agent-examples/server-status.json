@@ -1,0 +1,5 @@
+{
+  "name": "Server Status Alert",
+  "description": "Analyzes server metrics and generates alerts",
+  "prompt": "Analyze the following server metrics and provide a brief status summary:\n\n{{$json}}\n\nProvide: 1) Overall status (good/warning/critical), 2) Key issues if any, 3) Recommended actions."
+}

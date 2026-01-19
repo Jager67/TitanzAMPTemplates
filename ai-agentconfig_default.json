@@ -1,0 +1,18 @@
+{
+  "serverPort": 5678,
+  "logLevel": "info",
+  "aiEndpoint": "http://localhost:11434/api/generate",
+  "defaultModel": "llama3.2",
+  "maxTokens": 2048,
+  "temperature": 0.7,
+  "enableWebhooks": true,
+  "workflowDir": "./workflows/",
+  "autoRetry": true,
+  "retryAttempts": 3,
+  "apiToken": "",
+  "allowedOrigins": "*",
+  "rateLimit": 60,
+  "enableSystemPrompts": true,
+  "contextWindow": 10,
+  "customHeaders": {}
+}

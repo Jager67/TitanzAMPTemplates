@@ -1,0 +1,7 @@
+[{
+    "PortNumber": 5678,
+    "Protocol": "TCP",
+    "Name": "AI Agent HTTP API",
+    "Description": "Main HTTP API endpoint for AI requests",
+    "Ref": "ServerPort"
+}]

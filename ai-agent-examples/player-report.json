@@ -1,0 +1,5 @@
+{
+  "name": "Player Report Handler",
+  "description": "Processes player reports and suggests actions",
+  "prompt": "A player has submitted the following report:\n\n{{$json}}\n\nAnalyze the report and suggest: 1) Severity level, 2) Category (griefing/cheating/harassment/other), 3) Recommended moderator action."
+}

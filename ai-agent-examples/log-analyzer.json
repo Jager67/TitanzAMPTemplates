@@ -1,0 +1,5 @@
+{
+  "name": "Log Analyzer",
+  "description": "Analyzes game server logs for issues",
+  "prompt": "Review these game server log entries and identify any errors, warnings, or security concerns:\n\n{{$json}}\n\nProvide a categorized summary of issues found."
+}
